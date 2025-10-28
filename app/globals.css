@@ -24,7 +24,7 @@ main {
 }
 h1 {
   margin: 0 0 8px 0;
-  font-size: 18px; /* keep small */
+  font-size: 32px; /* keep small */
   letter-spacing: 0.04em;
   text-transform: lowercase; /* stylistic choice; easy to change */
 }
