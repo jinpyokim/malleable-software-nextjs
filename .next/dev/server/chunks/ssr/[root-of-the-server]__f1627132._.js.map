@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 14, "column": 0}, "map": {"version":3,"sources":["file:///Users/jinpyokim/projects/websites/malleable-software-nextjs/app/page.tsx"],"sourcesContent":["export default function Page() {\n  const year = new Date().getFullYear();\n  return (\n    <div className=\"wrap\">\n      <main aria-labelledby=\"brand\">\n        <h1 id=\"brand\">malleable software</h1>\n        <p>Cupertino, CA</p>\n        <p><a href=\"mailto:reach@malleablesoft.com\">reach@malleablesoft.com</a></p>\n        <footer>© {year} Malleable Software LLC</footer>\n      </main>\n    </div>\n  );\n}\n"],"names":[],"mappings":";;;;;;AAAe,SAAS;IACtB,MAAM,OAAO,IAAI,OAAO,WAAW;IACnC,qBACE,8OAAC;QAAI,WAAU;kBACb,cAAA,8OAAC;YAAK,mBAAgB;;8BACpB,8OAAC;oBAAG,IAAG;8BAAQ;;;;;;8BACf,8OAAC;8BAAE;;;;;;8BACH,8OAAC;8BAAE,cAAA,8OAAC;wBAAE,MAAK;kCAAiC;;;;;;;;;;;8BAC5C,8OAAC;;wBAAO;wBAAG;wBAAK;;;;;;;;;;;;;;;;;;AAIxB","debugId":null}}]
+}
