@@ -4,8 +4,8 @@ export default function Page() {
     <div className="wrap">
       <main aria-labelledby="brand">
         <h1 id="brand">malleable software</h1>
-        <p>innovates personal knowledge management with AI and</p>
-        <p>automates the discovery of insights from crowdsourced knowledge.</p>
+        <p>provides personal knowledge management with AI and</p>
+        <p>discovers insights from crowdsourced personalknowledge.</p>
         <br />
         <p>Cupertino, CA</p>
         <p><a href="mailto:reach@malleablesoft.com">reach@malleablesoft.com</a></p>

@@ -5,8 +5,11 @@
   "devFiles": [],
   "polyfillFiles": [],
   "lowPriorityFiles": [
-    "static/XbGPwGjKGBF5Nj2z027bu/_ssgManifest.js",
-    "static/XbGPwGjKGBF5Nj2z027bu/_buildManifest.js"
+    "static/7OIU-Ebe0ZaIqJKf5evnt/_buildManifest.js",
+    "static/7OIU-Ebe0ZaIqJKf5evnt/_ssgManifest.js",
+    "static/7OIU-Ebe0ZaIqJKf5evnt/_clientMiddlewareManifest.js"
   ],
-  "rootMainFiles": []
+  "rootMainFiles": [],
+  "rootMainFilesTree": {},
+  "pagesChunkGroupBootstrapParams": {}
 }
