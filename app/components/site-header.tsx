@@ -5,6 +5,7 @@ import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 import { Mark } from './brand-mark';
 import { ArrowRight } from './icons';
+import { ThemeToggle } from './theme-toggle';
 import { primaryNav, showBlogNavigation } from '../site-config';
 
 export function SiteHeader() {
@@ -30,12 +31,16 @@ export function SiteHeader() {
         <Link className="button primary nav-mobile-cta" href="/#contact" onClick={close}>Request early access <ArrowRight /></Link>
       </nav>
       <div className="header-actions">
+        <ThemeToggle />
         <Link className="header-link" href="/#contact">Contact</Link>
         <Link className="button primary button-sm" href="/#contact">Request early access</Link>
       </div>
-      <button className="menu-button" onClick={() => setMenuOpen(!menuOpen)} aria-expanded={menuOpen} aria-controls="main-nav" aria-label={menuOpen ? 'Close menu' : 'Open menu'}>
-        <span className={menuOpen ? 'burger open' : 'burger'} aria-hidden="true"><i /><i /></span>
-      </button>
+      <div className="header-mobile-tools">
+        <ThemeToggle />
+        <button className="menu-button" onClick={() => setMenuOpen(!menuOpen)} aria-expanded={menuOpen} aria-controls="main-nav" aria-label={menuOpen ? 'Close menu' : 'Open menu'}>
+          <span className={menuOpen ? 'burger open' : 'burger'} aria-hidden="true"><i /><i /></span>
+        </button>
+      </div>
     </div>
   </header>;
 }

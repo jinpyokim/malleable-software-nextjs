@@ -5,6 +5,7 @@ import { VisitorTracker } from './components/visitor-tracker';
 import { SiteHeader } from './components/site-header';
 import { SiteFooter } from './components/site-footer';
 import { contactEmail, siteUrl } from './site-config';
+import { themeInitScript } from './components/theme-toggle';
 
 const title = 'Malleable Software — Knowledge, made malleable';
 const description = 'Malleable Software builds AI-powered tools for connected thinking — helping people connect personal knowledge and discover insights together.';
@@ -20,7 +21,12 @@ export const metadata: Metadata = {
   twitter: { card: 'summary_large_image', title, description, images: [ogImage.url] },
 };
 
-export const viewport: Viewport = { themeColor: '#060e1a' };
+export const viewport: Viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: dark)', color: '#060e1a' },
+    { media: '(prefers-color-scheme: light)', color: '#f6f8fb' },
+  ],
+};
 
 // Structured data so search engines can show accurate company details.
 const organizationJsonLd = {
@@ -43,7 +49,10 @@ const organizationJsonLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
+      </head>
       <body>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }} />
         <a className="skip-link" href="#main">Skip to content</a>
