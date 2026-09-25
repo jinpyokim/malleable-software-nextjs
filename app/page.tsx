@@ -1,50 +1,166 @@
-'use client';
+import { ConceptGraph } from './components/concept-graph';
+import { EarlyAccessForm } from './components/early-access-form';
+import { Possibilities } from './components/possibilities';
+import { ArrowRight, ArrowUpRight, IconCompass, IconEye, IconHand, IconLayers, IconMail, IconNodes, IconPin, IconShape, IconShield, IconSpark, IconUsers } from './components/icons';
+import { contactEmail, mailto } from './site-config';
 
-import { useState } from 'react';
-import { Mark } from './components/brand-mark';
-
-const perspectives = [
-  { label: 'Connect ideas', title: 'Good ideas rarely live alone.', description: 'Explore the threads between what you read, save, and think. A new perspective could be hiding in something you already know.', note: 'An unexpected connection', insight: 'The best tools make space for thinking.', sources: ['Tools for thought', 'A quieter internet', 'Designing for curiosity'] },
-  { label: 'Explore knowledge', title: 'Follow your curiosity further.', description: 'Start with a question. Move between related ideas, revisit their context, and give your thinking room to evolve.', note: 'A question worth exploring', insight: 'What would software built around curiosity look like?', sources: ['Working notes', 'Questions without answers', 'The creative process'] },
-  { label: 'Discover together', title: 'Different minds. Shared discovery.', description: 'Our vision extends beyond individual knowledge: finding new insights through the ideas people choose to contribute.', note: 'A collective perspective', insight: 'Shared knowledge can reveal what one perspective misses.', sources: ['Collective intelligence', 'Learning in the open', 'Connected perspectives'] },
+const pillars = [
+  { icon: IconSpark, title: 'Human curiosity', text: 'Tools that start with your questions, not an algorithm’s.' },
+  { icon: IconLayers, title: 'Personal knowledge', text: 'Your ideas, your context, and your way of thinking.' },
+  { icon: IconUsers, title: 'Collective insight', text: 'What we can discover when knowledge is shared.' },
 ];
 
-function Arrow({ diagonal = false }: { diagonal?: boolean }) { return <span aria-hidden="true">{diagonal ? '↗' : '↗'}</span>; }
-function KnowledgeMap() {
-  return <div className="knowledge-map" role="img" aria-label="An illustrative map of connected notes on creativity, tools for thought, and collective intelligence">
-    <div className="map-grid" />
-    <svg className="connections" viewBox="0 0 620 500" fill="none" aria-hidden="true">
-      <path d="M310 246C310 135 120 180 120 110M310 246C390 230 475 150 480 100M310 246C410 246 490 320 510 355M310 246C220 246 180 350 135 375M310 246C300 310 325 375 340 425M120 110C230 40 375 40 480 100M135 375C270 440 385 435 510 355" />
-      <circle cx="310" cy="246" r="111" strokeDasharray="3 8" /><circle cx="310" cy="246" r="180" strokeDasharray="2 10" />
-    </svg>
-    <div className="map-label">A LITTLE CONTEXT. A NEW CONNECTION.</div>
-    <div className="map-note note-one"><span className="note-symbol">✳</span><small>SAVED IDEA</small><strong>Tools for thought</strong><p>Software that grows<br />with the way we think.</p><div className="note-tags">research <span>·</span> 4 connections</div></div>
-    <div className="map-note note-two"><span className="note-symbol">⌘</span><small>EXPLORATION</small><strong>The creative process</strong><div className="mini-lines"><i /><i /><i /></div></div>
-    <div className="map-core"><Mark /><span>Your knowledge,<br /><b>coming together.</b></span></div>
-    <div className="map-note note-three"><span className="note-symbol">◎</span><small>NEW PERSPECTIVE</small><strong>Collective intelligence</strong><p>What can we discover<br />when we think together?</p></div>
-    <div className="map-note note-four"><span className="accent-dot" /><span>A connection worth exploring</span><span>↗</span></div>
-    <span className="map-spark spark-one" /><span className="map-spark spark-two" /><span className="map-spark spark-three" />
-    <div className="map-caption"><span className="accent-dot" /> An illustration of our vision</div>
-  </div>;
-}
+const vision = [
+  { icon: IconLayers, title: 'A home for your thinking', text: 'An approach to personal knowledge that starts with your ideas, your context, and your curiosity.' },
+  { icon: IconNodes, title: 'Connections that matter', text: 'AI as a thinking partner — helping surface relationships and perspectives that invite a closer look.' },
+  { icon: IconCompass, title: 'Insight beyond the individual', text: 'A future where contributed knowledge opens new paths to understanding, together.' },
+];
+
+const steps = [
+  { title: 'Gather', text: 'Bring together what you read, save, and think — kept in the context where it made sense to you.' },
+  { title: 'Connect', text: 'AI helps surface threads between ideas, so relationships you might have missed come into view.' },
+  { title: 'Discover', text: 'Knowledge people choose to contribute reveals perspectives no single mind would find alone.' },
+];
+
+const principles = [
+  { icon: IconHand, title: 'Human in the loop', text: 'AI suggests. You decide. Our tools are built to support judgment, not replace it.' },
+  { icon: IconEye, title: 'Inspectable by design', text: 'Every suggestion should show where it came from, so you can trust — and question — it.' },
+  { icon: IconShield, title: 'Your knowledge, yours', text: 'What you capture belongs to you. Sharing is always a choice you make.' },
+  { icon: IconShape, title: 'Built to evolve', text: 'Knowledge isn’t static. Software that thinks with you should be malleable too.' },
+];
 
 export default function Page() {
-  const [active, setActive] = useState(0);
-  const perspective = perspectives[active];
-  return <>
-    <main id="main">
-      <section className="hero container" aria-labelledby="hero-title">
-        <div className="hero-copy"><div className="eyebrow"><span className="accent-dot" /> INDEPENDENT MINDS. CONNECTED IDEAS.</div><h1 id="hero-title">Knowledge.<br />Made <em>malleable.</em></h1><p>Your ideas deserve more than a place to live.<br className="desktop-break" /> They deserve room to grow.</p><p className="hero-description">We’re building AI-powered tools to connect personal knowledge and uncover insights together.</p><div className="hero-actions"><a className="button primary" href="#vision">Explore our vision <Arrow /></a><a className="text-link" href="mailto:reach@malleablesoft.com">Get in touch <Arrow /></a></div><div className="hero-footnote"><span className="tiny-cross">+</span> Built for the way your mind moves.</div></div>
-        <KnowledgeMap />
-      </section>
-      <div className="principles container"><span>A NEW WAY TO THINK WITH TECHNOLOGY</span><div>Human curiosity <b>+</b> Personal knowledge <b>+</b> Collective insight</div><span className="principle-star" aria-hidden="true">✳</span></div>
-      <section className="vision container section" id="vision" aria-labelledby="vision-title"><div className="section-heading"><span className="eyebrow">01 / OUR VISION</span><h2 id="vision-title">Less information overload.<br /><span>More moments of clarity.</span></h2><p>Knowledge isn’t static. It changes as we learn, question, and connect. We believe our software should do the same.</p></div>
-        <div className="vision-cards"><article><div className="card-art art-collect" aria-hidden="true"><div /><div /><div /><span>+</span></div><span className="card-number">01</span><h3>A home for your thinking</h3><p>An approach to personal knowledge that starts with your ideas, your context, and your curiosity.</p></article><article><div className="card-art art-connect" aria-hidden="true"><i /><i /><i /><i /><div>✳</div></div><span className="card-number">02</span><h3>Connections that matter</h3><p>AI as a thinking partner. Helping surface relationships and perspectives that invite a closer look.</p></article><article><div className="card-art art-discover" aria-hidden="true"><div /><div /><div /><span>↗</span></div><span className="card-number">03</span><h3>Insight beyond the individual</h3><p>A future where contributed knowledge opens new paths to understanding, together.</p></article></div>
-      </section>
-      <section className="possibilities section" id="possibilities" aria-labelledby="possibilities-title"><div className="container"><div className="section-top"><span className="eyebrow">02 / THE POSSIBILITIES</span><span className="small-muted">A glimpse of what we’re working toward</span></div><div className="perspective-tabs" aria-label="Explore possibilities">{perspectives.map((item, index) => <button key={item.label} aria-pressed={index === active} onClick={() => setActive(index)}><span>0{index + 1}</span>{item.label}<Arrow /></button>)}</div><div className="perspective-content"><div><h2 id="possibilities-title">{perspective.title}</h2><p>{perspective.description}</p><a className="text-link" href="mailto:reach@malleablesoft.com?subject=Let%E2%80%99s%20talk%20about%20Malleable">Build the conversation with us <Arrow /></a></div><div className="insight-demo"><div className="insight-top"><Mark small /><span>CONNECTED THINKING</span><span>✧</span></div><div className="insight-body"><span className="eyebrow">{perspective.note}</span><h3>{perspective.insight}</h3><div className="insight-sources">{perspective.sources.map((source, i) => <span key={source}><b>0{i + 1}</b>{source}<Arrow /></span>)}</div></div><div className="demo-caption">ILLUSTRATIVE CONCEPT · NOT A PRODUCT SCREENSHOT</div></div></div></div></section>
-      <section className="about container section" id="about" aria-labelledby="about-title"><div><span className="eyebrow">03 / ABOUT MALLEABLE</span><h2 id="about-title">Small team.<br /><span>Expansive thinking.</span></h2></div><div className="about-copy"><p>We’re Malleable Software, a company in Cupertino, California exploring the intersection of AI, personal knowledge, and collective discovery.</p><p>Our starting point is simple: technology should help us make more of what we know. We’re building toward that future, one connection at a time.</p><span className="location"><span className="accent-dot" /> Cupertino, California <span>37.3230° N · 122.0322° W</span></span></div></section>
-      <section className="contact container" aria-labelledby="contact-title"><div className="contact-orbit" aria-hidden="true"><i /><i /><i /></div><div className="eyebrow">THE NEXT CONNECTION STARTS HERE</div><h2 id="contact-title">Let’s shape<br />what comes <em>next.</em></h2><a className="button primary" href="mailto:reach@malleablesoft.com">Say hello <Arrow /></a><a className="contact-email" href="mailto:reach@malleablesoft.com">reach@malleablesoft.com</a></section>
-    </main>
+  return <main id="main">
+    {/* Hero */}
+    <section className="hero" aria-labelledby="hero-title">
+      <div className="hero-glow" aria-hidden="true" />
+      <div className="container hero-grid">
+        <div className="hero-copy">
+          <a className="pill" href="#vision"><span className="pill-tag">AI · Knowledge</span>Independent minds. Connected ideas. <ArrowRight /></a>
+          <h1 id="hero-title">Knowledge,<br />made <span className="gradient-text">malleable.</span></h1>
+          <p className="lede">We’re building AI-powered tools that help people connect personal knowledge — and uncover insights together.</p>
+          <div className="hero-actions">
+            <a className="button primary" href="#contact">Request early access <ArrowRight /></a>
+            <a className="button secondary" href="#vision">Explore our vision</a>
+          </div>
+          <p className="hero-meta"><IconPin /> Malleable Software · Cupertino, California</p>
+        </div>
+        <ConceptGraph />
+      </div>
+    </section>
 
-  </>;
+    {/* Pillars */}
+    <section className="pillars" aria-label="What we bring together">
+      <div className="container pillars-grid">
+        {pillars.map(({ icon: Icon, title, text }, i) => <div className="pillar" key={title}>
+          <span className="icon-badge"><Icon /></span>
+          <div><h2>{title}</h2><p>{text}</p></div>
+          {i < pillars.length - 1 && <span className="pillar-plus" aria-hidden="true">+</span>}
+        </div>)}
+      </div>
+    </section>
+
+    {/* Vision */}
+    <section className="section" id="vision" aria-labelledby="vision-title">
+      <div className="container">
+        <header className="section-header">
+          <span className="eyebrow">Our vision</span>
+          <h2 id="vision-title">Less information overload.<br /><span className="dim">More moments of clarity.</span></h2>
+          <p>Knowledge isn’t static. It changes as we learn, question, and connect. We believe the software we use to think should do the same.</p>
+        </header>
+        <div className="card-grid three">
+          {vision.map(({ icon: Icon, title, text }, i) => <article className="card" key={title}>
+            <div className="card-head"><span className="icon-badge"><Icon /></span><span className="card-index">0{i + 1}</span></div>
+            <h3>{title}</h3><p>{text}</p>
+          </article>)}
+        </div>
+      </div>
+    </section>
+
+    {/* Approach */}
+    <section className="section section-alt" id="approach" aria-labelledby="approach-title">
+      <div className="container">
+        <header className="section-header center">
+          <span className="eyebrow">Our approach</span>
+          <h2 id="approach-title">From scattered notes<br /><span className="dim">to shared understanding.</span></h2>
+          <p>We’re exploring how AI can help knowledge move — from a single idea, to a web of connections, to insight that’s bigger than any one of us.</p>
+        </header>
+        <ol className="steps">
+          {steps.map((step, i) => <li key={step.title} className="step">
+            <span className="step-num">{String(i + 1).padStart(2, '0')}</span>
+            <h3>{step.title}</h3><p>{step.text}</p>
+          </li>)}
+        </ol>
+        <div className="possibilities" id="possibilities">
+          <div className="subsection-head"><span className="eyebrow">The possibilities</span><span className="muted-sm">A glimpse of what we’re working toward</span></div>
+          <Possibilities />
+        </div>
+      </div>
+    </section>
+
+    {/* Principles */}
+    <section className="section" id="principles" aria-labelledby="principles-title">
+      <div className="container principles-layout">
+        <header className="section-header sticky">
+          <span className="eyebrow">Principles</span>
+          <h2 id="principles-title">AI that earns<br /><span className="dim">your trust.</span></h2>
+          <p>The way we build matters as much as what we build. These commitments guide every decision we make.</p>
+          <a className="text-link" href={mailto('Let’s talk about Malleable')}>Talk with our team <ArrowUpRight /></a>
+        </header>
+        <div className="card-grid two">
+          {principles.map(({ icon: Icon, title, text }) => <article className="card" key={title}>
+            <span className="icon-badge"><Icon /></span><h3>{title}</h3><p>{text}</p>
+          </article>)}
+        </div>
+      </div>
+    </section>
+
+    {/* Company */}
+    <section className="section section-alt" id="company" aria-labelledby="company-title">
+      <div className="container company">
+        <div>
+          <span className="eyebrow">About Malleable</span>
+          <h2 id="company-title">Small team.<br /><span className="dim">Expansive thinking.</span></h2>
+          <p className="company-lede">We’re Malleable Software, a company in Cupertino, California exploring the intersection of AI, personal knowledge, and collective discovery.</p>
+          <p>Our starting point is simple: technology should help us make more of what we know. We’re building toward that future, one connection at a time.</p>
+        </div>
+        <dl className="facts">
+          <div><dt>Headquarters</dt><dd>Cupertino, California</dd></div>
+          <div><dt>Focus</dt><dd>AI · Personal knowledge · Collective discovery</dd></div>
+          <div><dt>Company</dt><dd>Malleable Software LLC</dd></div>
+          <div><dt>Contact</dt><dd><a href={`mailto:${contactEmail}`}>{contactEmail}</a></dd></div>
+        </dl>
+      </div>
+    </section>
+
+    {/* Contact / CTA */}
+    <section className="section cta" id="contact" aria-labelledby="contact-title">
+      <div className="container">
+        <header className="section-header center">
+          <span className="eyebrow">Get involved</span>
+          <h2 id="contact-title">Let’s shape what comes <span className="gradient-text">next.</span></h2>
+          <p>Whether you want to try what we’re building or build it with us, we’d love to hear from you.</p>
+        </header>
+        <div className="cta-grid">
+          <div className="cta-card featured">
+            <span className="cta-label">For early adopters</span>
+            <h3>Request early access</h3>
+            <p>Be among the first to try Malleable and help shape it with your feedback.</p>
+            <EarlyAccessForm />
+          </div>
+          <div className="cta-card">
+            <span className="cta-label">For partners &amp; investors</span>
+            <h3>Start a conversation</h3>
+            <p>We’re looking to connect with researchers, partners, and investors who share our vision for human-centered AI.</p>
+            <ul className="cta-links">
+              <li><a href={mailto('Partnership inquiry')}><span><strong>Partnerships</strong><small>Research and product collaborations</small></span><ArrowUpRight /></a></li>
+              <li><a href={mailto('Investor inquiry')}><span><strong>Investors</strong><small>Learn about our vision and plans</small></span><ArrowUpRight /></a></li>
+              <li><a href={mailto('Press inquiry')}><span><strong>Press &amp; general</strong><small>Everything else</small></span><ArrowUpRight /></a></li>
+            </ul>
+            <a className="cta-email" href={`mailto:${contactEmail}`}><IconMail /> {contactEmail}</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>;
 }

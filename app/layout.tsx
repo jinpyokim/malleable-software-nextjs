@@ -1,14 +1,24 @@
+import type { Metadata, Viewport } from 'next';
 import './globals.css';
+import './styles/pages.css';
 import { VisitorTracker } from './components/visitor-tracker';
-import Link from 'next/link';
 import { SiteHeader } from './components/site-header';
-import { Mark } from './components/brand-mark';
-import { showBlogNavigation } from './site-config';
+import { SiteFooter } from './components/site-footer';
 
-export const metadata = {
-  title: 'Malleable Software — Knowledge, made malleable',
-  description: 'AI-powered tools for connected thinking. Malleable Software is exploring personal knowledge, human curiosity, and collective discovery.',
+const title = 'Malleable Software — Knowledge, made malleable';
+const description = 'Malleable Software builds AI-powered tools for connected thinking — helping people connect personal knowledge and discover insights together.';
+
+export const metadata: Metadata = {
+  metadataBase: new URL('https://malleablesoft.com'),
+  title,
+  description,
+  applicationName: 'Malleable Software',
+  icons: { icon: '/favicon.svg' },
+  openGraph: { title, description, type: 'website', siteName: 'Malleable Software', images: ['/malleable-logo.png'] },
+  twitter: { card: 'summary', title, description },
 };
+
+export const viewport: Viewport = { themeColor: '#060e1a' };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -18,12 +28,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <SiteHeader />
         <VisitorTracker />
         {children}
-        <footer className="footer container">
-          <Link className="brand" href="/" aria-label="Malleable Software home"><Mark small /></Link>
-          <span>© {new Date().getFullYear()} Malleable Software LLC</span>
-          {showBlogNavigation && <Link href="/blog">Blog</Link>}
-          <a href="#main">Back to top ↑</a>
-        </footer>
+        <SiteFooter />
       </body>
     </html>
   );
