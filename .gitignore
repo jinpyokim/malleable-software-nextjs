@@ -1,3 +1,8 @@
 node_modules/*
 .next/*
 out/*
+
+# Local analytics credentials and Netlify development state
+.env
+.env.*
+.netlify/

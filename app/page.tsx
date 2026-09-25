@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import { Mark } from './components/brand-mark';
 
 const perspectives = [
   { label: 'Connect ideas', title: 'Good ideas rarely live alone.', description: 'Explore the threads between what you read, save, and think. A new perspective could be hiding in something you already know.', note: 'An unexpected connection', insight: 'The best tools make space for thinking.', sources: ['Tools for thought', 'A quieter internet', 'Designing for curiosity'] },
@@ -9,11 +10,6 @@ const perspectives = [
 ];
 
 function Arrow({ diagonal = false }: { diagonal?: boolean }) { return <span aria-hidden="true">{diagonal ? '↗' : '↗'}</span>; }
-// Frame the supplied square artwork without changing or distorting the original logo.
-function Mark({ small = false }: { small?: boolean }) {
-  return <span className={`brand-mark ${small ? 'small' : ''}`} aria-hidden="true"><img src="/malleable-logo.png" alt="" width="1254" height="1254" /></span>;
-}
-
 function KnowledgeMap() {
   return <div className="knowledge-map" role="img" aria-label="An illustrative map of connected notes on creativity, tools for thought, and collective intelligence">
     <div className="map-grid" />
@@ -34,16 +30,8 @@ function KnowledgeMap() {
 
 export default function Page() {
   const [active, setActive] = useState(0);
-  const [menuOpen, setMenuOpen] = useState(false);
   const perspective = perspectives[active];
   return <>
-    <a className="skip-link" href="#main">Skip to content</a>
-    <header className="header container">
-      <a href="#" className="brand" aria-label="Malleable Software home"><Mark small /></a>
-      <button className="menu-button" onClick={() => setMenuOpen(!menuOpen)} aria-expanded={menuOpen} aria-controls="main-nav">{menuOpen ? 'Close' : 'Menu'} <span aria-hidden="true">{menuOpen ? '−' : '+'}</span></button>
-      <nav id="main-nav" className={menuOpen ? 'navigation open' : 'navigation'} aria-label="Main navigation"><a href="#vision" onClick={() => setMenuOpen(false)}>Our vision</a><a href="#possibilities" onClick={() => setMenuOpen(false)}>Possibilities</a><a href="#about" onClick={() => setMenuOpen(false)}>About us</a></nav>
-      <a className="header-contact" href="mailto:reach@malleablesoft.com">Let’s connect <Arrow /></a>
-    </header>
     <main id="main">
       <section className="hero container" aria-labelledby="hero-title">
         <div className="hero-copy"><div className="eyebrow"><span className="accent-dot" /> INDEPENDENT MINDS. CONNECTED IDEAS.</div><h1 id="hero-title">Knowledge.<br />Made <em>malleable.</em></h1><p>Your ideas deserve more than a place to live.<br className="desktop-break" /> They deserve room to grow.</p><p className="hero-description">We’re building AI-powered tools to connect personal knowledge and uncover insights together.</p><div className="hero-actions"><a className="button primary" href="#vision">Explore our vision <Arrow /></a><a className="text-link" href="mailto:reach@malleablesoft.com">Get in touch <Arrow /></a></div><div className="hero-footnote"><span className="tiny-cross">+</span> Built for the way your mind moves.</div></div>
@@ -57,6 +45,6 @@ export default function Page() {
       <section className="about container section" id="about" aria-labelledby="about-title"><div><span className="eyebrow">03 / ABOUT MALLEABLE</span><h2 id="about-title">Small team.<br /><span>Expansive thinking.</span></h2></div><div className="about-copy"><p>We’re Malleable Software, a company in Cupertino, California exploring the intersection of AI, personal knowledge, and collective discovery.</p><p>Our starting point is simple: technology should help us make more of what we know. We’re building toward that future, one connection at a time.</p><span className="location"><span className="accent-dot" /> Cupertino, California <span>37.3230° N · 122.0322° W</span></span></div></section>
       <section className="contact container" aria-labelledby="contact-title"><div className="contact-orbit" aria-hidden="true"><i /><i /><i /></div><div className="eyebrow">THE NEXT CONNECTION STARTS HERE</div><h2 id="contact-title">Let’s shape<br />what comes <em>next.</em></h2><a className="button primary" href="mailto:reach@malleablesoft.com">Say hello <Arrow /></a><a className="contact-email" href="mailto:reach@malleablesoft.com">reach@malleablesoft.com</a></section>
     </main>
-    <footer className="footer container"><a className="brand" href="#" aria-label="Malleable Software home"><Mark small /></a><span>© {new Date().getFullYear()} Malleable Software LLC</span><a href="#main">Back to top ↑</a></footer>
+
   </>;
 }
