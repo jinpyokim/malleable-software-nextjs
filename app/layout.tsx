@@ -1,8 +1,8 @@
 import './globals.css';
 
 export const metadata = {
-  title: 'Malleable Software',
-  description: 'Malleable Software — Cupertino, CA. Contact: reach@malleablesoft.com',
+  title: 'Malleable Software — Knowledge, made malleable',
+  description: 'AI-powered tools for connected thinking. Malleable Software is exploring personal knowledge, human curiosity, and collective discovery.',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
