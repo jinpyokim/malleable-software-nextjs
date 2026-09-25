@@ -101,3 +101,8 @@ test('retention removes only expired event keys', async () => {
   backend.store = () => ({ list: async function* () { yield { blobs: [{ key: '2000-01-01/old' }, { key: `${new Date().toISOString().slice(0, 10)}/new` }] }; }, delete: async key => deleted.push(key) });
   await retention(); assert.deepEqual(deleted, ['2000-01-01/old']);
 });
+
+test('collector accepts the privacy page and the early-access conversion event only', () => {
+  for (const path of ['/privacy', '/early-access/submitted']) assert.equal(backend.validEvent({ ...payload, path }), true);
+  for (const path of ['/early-access', '/early-access/submitted/x', '/privacy/x']) assert.equal(backend.validEvent({ ...payload, path }), false);
+});

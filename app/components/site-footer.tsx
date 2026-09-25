@@ -30,7 +30,7 @@ export function SiteFooter() {
       </div>
       <div className="footer-bottom">
         <span>© {new Date().getFullYear()} Malleable Software LLC. All rights reserved.</span>
-        <a href="#main">Back to top ↑</a>
+        <div className="footer-legal"><Link href="/privacy">Privacy</Link><a href="#main">Back to top ↑</a></div>
       </div>
     </div>
   </footer>;

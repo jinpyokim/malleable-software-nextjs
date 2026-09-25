@@ -10,3 +10,6 @@ export const primaryNav = [
   { href: '/#principles', label: 'Principles' },
   { href: '/#company', label: 'Company' },
 ];
+
+// Canonical site URL — used for sitemap, robots, social previews, and structured data.
+export const siteUrl = 'https://malleablesoft.com';

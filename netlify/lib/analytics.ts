@@ -16,6 +16,6 @@ export function validEvent(value: unknown): value is { eventId: string; visitorI
   const v = value as Record<string, unknown>;
   const uuid = /^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
   return ['eventId', 'visitorId', 'sessionId'].every(key => typeof v[key] === 'string' && uuid.test(v[key] as string)) &&
-    typeof v.path === 'string' && /^\/(?:blog(?:\/[a-z0-9-]+)?)?$/.test(v.path) &&
+    typeof v.path === 'string' && /^\/(?:blog(?:\/[a-z0-9-]+)?|privacy|early-access\/submitted)?$/.test(v.path) &&
     ['Direct', 'Search', 'Referral', 'Social'].includes(v.source as string) && ['Desktop', 'Mobile', 'Tablet'].includes(v.device as string);
 }

@@ -346,3 +346,29 @@ em { font-style: normal; background: var(--spectrum); -webkit-background-clip: t
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation: none !important; transition: none !important; }
 }
+
+/* ==========================================================================
+   Legal pages & 404
+   ========================================================================== */
+.footer-legal { display: flex; gap: 24px; }
+.legal-page { max-width: 760px; padding: 72px 0 96px; }
+.legal-heading h1 { margin: 16px 0 12px; font-size: clamp(38px, 5vw, 56px); }
+.legal-heading p { color: var(--subtle); font-size: 15px; }
+.legal-body { margin-top: 40px; padding-top: 40px; border-top: 1px solid var(--line); }
+.legal-body .legal-lede { font-size: 19px; line-height: 1.7; color: #c9d7e8; }
+.legal-body section { margin-top: 40px; }
+.legal-body h2 { font-size: 22px; letter-spacing: -.015em; margin-bottom: 12px; }
+.legal-body p, .legal-body li { font-size: 16.5px; line-height: 1.75; color: var(--muted); }
+.legal-body p + p { margin-top: 12px; }
+.legal-body ul { margin: 12px 0; padding-left: 22px; display: grid; gap: 8px; }
+.legal-body a:not(.text-link) { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+.legal-body .text-link { margin-top: 48px; }
+.form-note a { color: var(--muted); text-decoration: underline; text-underline-offset: 3px; }
+.form-note a:hover { color: var(--text); }
+
+.not-found { position: relative; min-height: 70vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 80px 0; isolation: isolate; }
+.not-found-code { position: absolute; z-index: -1; top: 50%; left: 50%; transform: translate(-50%, -55%); font-size: clamp(160px, 28vw, 360px); font-weight: 800; letter-spacing: -.06em; line-height: 1; color: transparent; -webkit-text-stroke: 1px rgba(92, 200, 255, .14); user-select: none; }
+.not-found h1 { margin: 16px 0; font-size: clamp(34px, 5vw, 56px); max-width: 760px; }
+.not-found > p { font-size: 18px; color: var(--muted); }
+.not-found .hero-actions { justify-content: center; }
+@media (max-width: 640px) { .legal-page { padding: 48px 0 72px; } .footer-legal { gap: 20px; } }

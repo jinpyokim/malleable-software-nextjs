@@ -3,6 +3,7 @@
 import { FormEvent, useState } from 'react';
 import { contactEmail, mailto } from '../site-config';
 import { ArrowRight, Check } from './icons';
+import { trackEvent } from './visitor-tracker';
 
 type Status = 'idle' | 'sending' | 'done' | 'error';
 
@@ -24,6 +25,7 @@ export function EarlyAccessForm() {
       const res = await fetch('/__forms.html', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: new URLSearchParams(data as unknown as Record<string, string>).toString() });
       if (!res.ok) throw new Error(String(res.status));
       setStatus('done');
+      trackEvent('/early-access/submitted');
       form.reset();
     } catch {
       setStatus('error');
@@ -42,6 +44,6 @@ export function EarlyAccessForm() {
     <label className="field"><span>What would you like to think better about? <em className="optional">Optional</em></span><input name="interest" placeholder="Research, writing, learning, a team knowledge base…" /></label>
     <button className="button primary button-block" type="submit" disabled={status === 'sending'}>{status === 'sending' ? 'Sending…' : <>Request early access <ArrowRight /></>}</button>
     {status === 'error' && <p className="form-error" role="alert">We couldn’t submit the form just now. <a href={mailto(`Early access request${email ? ` — ${email}` : ''}`)}>Email us at {contactEmail}</a> instead.</p>}
-    <p className="form-note">No spam. We’ll only email you about Malleable early access.</p>
+    <p className="form-note">No spam. We’ll only email you about Malleable early access. See our <a href="/privacy">privacy policy</a>.</p>
   </form>;
 }

@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { ConceptGraph } from './components/concept-graph';
 import { EarlyAccessForm } from './components/early-access-form';
 import { Possibilities } from './components/possibilities';
@@ -28,6 +29,8 @@ const principles = [
   { icon: IconShield, title: 'Your knowledge, yours', text: 'What you capture belongs to you. Sharing is always a choice you make.' },
   { icon: IconShape, title: 'Built to evolve', text: 'Knowledge isn’t static. Software that thinks with you should be malleable too.' },
 ];
+
+export const metadata: Metadata = { alternates: { canonical: '/' } };
 
 export default function Page() {
   return <main id="main">

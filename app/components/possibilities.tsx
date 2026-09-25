@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { KeyboardEvent, useRef, useState } from 'react';
 import { Mark } from './brand-mark';
 import { ArrowUpRight } from './icons';
 
@@ -12,14 +12,24 @@ const perspectives = [
 
 export function Possibilities() {
   const [active, setActive] = useState(0);
+  const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
   const p = perspectives[active];
+  // WAI-ARIA tabs pattern: arrows move between tabs, Home/End jump to the ends.
+  const onKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+    const last = perspectives.length - 1;
+    const next = { ArrowRight: active === last ? 0 : active + 1, ArrowLeft: active === 0 ? last : active - 1, Home: 0, End: last }[event.key];
+    if (next === undefined) return;
+    event.preventDefault();
+    setActive(next);
+    tabRefs.current[next]?.focus();
+  };
   return <div className="possibilities-body">
-    <div className="tabs" role="tablist" aria-label="Explore possibilities">
-      {perspectives.map((item, index) => <button key={item.label} role="tab" id={`tab-${index}`} aria-selected={index === active} aria-controls="possibility-panel" onClick={() => setActive(index)}>
+    <div className="tabs" role="tablist" aria-label="Explore possibilities" onKeyDown={onKeyDown}>
+      {perspectives.map((item, index) => <button key={item.label} ref={el => { tabRefs.current[index] = el; }} role="tab" id={`tab-${index}`} tabIndex={index === active ? 0 : -1} aria-selected={index === active} aria-controls="possibility-panel" onClick={() => setActive(index)}>
         <span className="tab-index">0{index + 1}</span>{item.label}
       </button>)}
     </div>
-    <div className="possibility" id="possibility-panel" role="tabpanel" aria-labelledby={`tab-${active}`}>
+    <div className="possibility" id="possibility-panel" role="tabpanel" tabIndex={0} aria-labelledby={`tab-${active}`}>
       <div className="possibility-copy">
         <h3>{p.title}</h3>
         <p>{p.description}</p>
