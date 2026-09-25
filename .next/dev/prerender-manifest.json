@@ -1,1 +1,11 @@
-{"version":4,"routes":{"/blog/designing-for-connected-knowledge":{},"/blog/making-ai-suggestions-inspectable":{},"/blog/small-experiments-for-thinking-tools":{}},"dynamicRoutes":{"/blog/[slug]":{"dataRoute":null,"dataRouteRegex":null,"fallback":false,"fallbackRevalidate":false,"fallbackSourceRoute":"/blog/[slug]","routeRegex":"^\\/blog\\/([^/]+?)(?:\\/)?$","allowHeader":[]}},"notFoundRoutes":[],"preview":{"previewModeId":"0921053463fae527d69b71f5398f8246","previewModeSigningKey":"db41882be540e857bb86ffcc684e75fd93dc9172c3e76812d17213b11d7994e5","previewModeEncryptionKey":"4e864fb4274ac9a795ac12deac8604b83773f081a08318e8485dc657c1a06557"}}
+{
+  "version": 4,
+  "routes": {},
+  "dynamicRoutes": {},
+  "notFoundRoutes": [],
+  "preview": {
+    "previewModeId": "7ec8e88e67e8ac301481990166caa85c",
+    "previewModeSigningKey": "b19be250eaca4fc5bd676db2249773be570e05d9e5c75c65ae5ba82e90fb4819",
+    "previewModeEncryptionKey": "41836e8d9ac0aa7271a0149317dac99cfe727e2fe0de6f8032f6bd897fe153fb"
+  }
+}
