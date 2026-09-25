@@ -1,8 +1,20 @@
-node_modules/*
-.next/*
-out/*
+node_modules/
+.next/
+out/
 
 # Local analytics credentials and Netlify development state
 .env
 .env.*
 .netlify/
+
+# macOS
+.DS_Store
+
+# Secrets — never commit
+dashboard-token.txt
+*.token
+*-token.txt
+
+# Local previews
+Claude outputs/
+.claude-tmp/
