@@ -12,3 +12,9 @@ The blog lives at `/blog`. Each article has its own `/blog/<slug>` URL and is ge
 The three included articles are explicitly labeled samples. Replace or remove them before using the blog for actual company posts. The sample notice on the blog index automatically disappears when no sample articles remain.
 
 No CMS, account, or database is required. To save a draft, keep its file out of the `posts` array until it is ready.
+
+## Search visibility before launch
+
+`app/blog/layout.tsx` applies `noindex, follow` to the blog listing and every article. The pages remain accessible by direct URL, but search engines are instructed not to index them. Keep blog crawling allowed in `robots.txt` so crawlers can read the directive.
+
+When launching, replace or remove sample articles, remove the temporary `noindex` policy from the blog layout, and enable `showBlogNavigation` in `app/site-config.ts`. Rebuild and deploy; search engines must recrawl the pages before their listings change.
